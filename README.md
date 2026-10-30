@@ -1,2 +1,2 @@
 # data-acquisition-boards
-Formula SAE
+handles sensor data on Formula SAE vehicle
