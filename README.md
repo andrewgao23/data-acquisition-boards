@@ -1,6 +1,8 @@
 # data-acquisition-boards
 The **data acquisition** (or sensor) boards on the vehicle is responsible for powering and protecting sensors, filtering analog and digital telemetry data, and converting it to CAN to be logged. It is non-car-critical, meaning nothing on the board should be required for the vehicle to drive.
 <br><br>
+2025-2026 Sensor Board:
+<br><br>
 <img width="1750" height="899" alt="image" src="https://github.com/user-attachments/assets/e52823dc-6c6c-4c70-b1c8-5be231561d5b" />
 <br><br>
 Until recently, the vehicle ran a 4-board architecture (now dual boards).
@@ -18,7 +20,7 @@ I/O is offboarded in the diagram.
 <br><br>
 <img width="1747" height="900" alt="image" src="https://github.com/user-attachments/assets/86c87a21-a7c8-4327-91e4-cc4a089916f1" />
 <br><br>
-Offboarded power goes to sensors, and on-board power is used for internal components such as the STM32H7 MCU used for processing telemetry data>
+Offboarded power goes to sensors, and on-board power is used for internal components such as the STM32H7 MCU used for processing telemetry data.
 <br><br>
 **Sensor power OCP:**
 <br><br>
