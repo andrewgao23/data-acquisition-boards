@@ -14,7 +14,14 @@ With consolidated front and rear boards, most things have to change, but the boa
 <br><br>
 I/O is offboarded in the diagram.
 <br><br>
-Power stage:
+**Power stage:**
 <br><br>
 <img width="1747" height="900" alt="image" src="https://github.com/user-attachments/assets/86c87a21-a7c8-4327-91e4-cc4a089916f1" />
-
+<br><br>
+Offboarded power goes to sensors, and on-board power is used for internal components such as the STM32H7 MCU used for processing telemetry data>
+<br><br>
+**Sensor power OCP:**
+<br><br>
+Rules require that the sensor boards provide over-current protection for power rails connecting the sensors. This was especially relevant with the 4-board architecture, as a fault with one board could short all 4 boards connected on the same rail.
+<br?>br>
+For the 2025-2026 season, I ran
