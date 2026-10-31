@@ -56,4 +56,7 @@ How ADCs work and the two main architectures:
 <br><br>
 **Grounding**
 <br><br>
-**Switch to dual sensor board architecture**
+## Switch to dual sensor board architecture
+<br><br>
+**MCU pinout:**
+
