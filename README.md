@@ -28,9 +28,32 @@ Rules require that the sensor boards provide over-current protection for power r
 <br>br>
 For the 2025-2026 season, I ran trade studies on potential OCP components such as PTC and automotive fusing, e-fusing, load-switch ICs, ORing controllers, and op-amps.
 <br><br>
-*insert screenshot of trade study here*
+*insert screenshot of confluence trade study here*
 <br><br>
 Ultimately, we decided on PTC fusing with an op-amp buffer as our protection circuit. The PTC fusing provides OCP while the op-amp provides voltage buffering. This is the OCP circuit for the 3V3D rail:
 <br><br>
 <img width="1917" height="375" alt="image" src="https://github.com/user-attachments/assets/111310ce-256a-4d1a-9b82-190f8ba20e47" />
-
+<img width="1035" height="533" alt="image" src="https://github.com/user-attachments/assets/ce8222dc-d8bc-4d78-8b67-22b13bcf412c" />
+<br><br>
+Unfortunately, this design had a critical fault: the op-amp was sinking significant current during normal use and would overheat, causing it to break. Upon further inspection, the PTC fuse never tripped, meaning most of if not all current was diverted to the op-amp. Essentially, the op-amp acted as a fuse. Not good.
+<br><br>
+For the 2026-2027 season, this is the primary issue we sought to resolve. We re-ran component research, prioritizing low power consumption, simplicity of implementation, and physical size. We brought back candidates from last year, reconsidering them for this year's board.
+<br><br>
+*insert screenshot of confluence trade study here*
+<br><br>
+Many components were seriously considered for the final design. ORing controllers were an initial choice, but ultimately discounted as they were relatively complex to implement, required external components, and were not designed specifically for the function that we wanted it to perform (only as a side benefit).
+<br><br>
+Load-switch ICs were a promising choice; initially discounted due to a low voltage input range, upon verification with sensor voltage requirements we deemed it sufficient for our use case. However, these were new components not used elsewhere on the car, adding complexity and risk to implementation, and we found components better suited for our use case later on.
+<br><br>
+The final decision was between current-sensing e-fusing, automotive fusing, and PTC fusing.
+*explain pros and cons for all three options and which one we decided*
+<br><br>
+**ADC selection**
+<br><br>
+How ADCs work and the two main architectures:
+<br><br>
+**Filtering**
+<br><br>
+**Grounding**
+<br><br>
+**Switch to dual sensor board architecture**
