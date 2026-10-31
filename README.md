@@ -10,11 +10,11 @@ Until recently, the vehicle ran a 4-board architecture (now dual boards).
 <br><br>
 With consolidated front and rear boards, most things have to change, but the board structure remains the same:
 <br><br>
-<img width="1650" height="953" alt="image" src="https://github.com/user-attachments/assets/e1ead755-5fa7-4c7e-aa9a-66490bfc4920" />
+<img width="1650" height="953" alt="image" src="https://github.com/user-attachments/assets/04cbe901-36c6-4b56-98af-bc135628c3cb" />
 <br><br>
 I/O is offboarded in the diagram.
 <br><br>
 Power stage:
 <br><br>
-<img width="1747" height="900" alt="image" src="https://github.com/user-attachments/assets/41947413-882b-45eb-bf5d-cd9f42def1bb" />
+<img width="1747" height="900" alt="image" src="https://github.com/user-attachments/assets/86c87a21-a7c8-4327-91e4-cc4a089916f1" />
 
