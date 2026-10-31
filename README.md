@@ -25,7 +25,7 @@ Offboarded power goes to sensors, and on-board power is used for internal compon
 **Sensor power OCP:**
 <br><br>
 Rules require that the sensor boards provide over-current protection for power rails connecting the sensors. This was especially relevant with the 4-board architecture, as a fault with one board could short all 4 boards connected on the same rail.
-<br?>br>
+<br>br>
 For the 2025-2026 season, I ran trade studies on potential OCP components such as PTC and automotive fusing, e-fusing, load-switch ICs, ORing controllers, and op-amps.
 <br><br>
 *insert screenshot of trade study here*
