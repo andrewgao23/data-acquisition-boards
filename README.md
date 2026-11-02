@@ -62,9 +62,14 @@ Many components were seriously considered for the final design. ORing controller
 <br><br>
 Load-switch ICs were a promising choice; initially discounted due to a low voltage input range, upon verification with sensor voltage requirements we deemed it sufficient for our use case. However, these were new components not used elsewhere on the car, adding complexity and risk to implementation, and we found components better suited for our use case later on.
 <br><br>
-The final decision was between current-sensing e-fusing, automotive fusing, and PTC fusing.
-*explain pros and cons for all three options and which one we decided*
+The final decision was between current-sensing e-fusing, automotive fusing, and PTC fusing. In short, current-sensing e-fusing uses shunt resistors and amplifiers to measure voltage drop across a resistor, calculating current. It samples voltages based off software settings and remotely switches a high-side driver (e-fuse) whenever it detects over-current. Software integration means extremely fast reaction time, adjustable over-current limiting and extra testing data. However, it is expensive, requires extra effort both with hardware and firmware, and takes up extra space on the board. While an extremely effective option, it is overkill for *most* of our sensor powering OCP applications.
 <br><br>
+Automotive fusing is the simplest option. It is a standard fuse that melts over a certain current threshold and requires replacement with every break. It is cheap, small, and fast. The only downside is that it needs replacement, but ideally the power rails should not short often and so the extra work would be negligible in the long run.
+<br><br>
+PTC fusing stands for positive temperature coefficient. The fuses are made of a material that expand at a certain temperature, increasing resistance massively. When it cools down, it conducts again, acting as a normal wire. We used this for the 2025-2026 sensor board OCP circuitry, and while it was not the main source of issues we had that year, some other concerns with this option were that the temperature threshold was not exact, and that the reaction time would take too long (much slower reaction time than both automotive fusing and e-fusing). However, we confirmed with the rest of the circuit design team that PTC fusing had a sufficiently low reaction time and that barring external issues, it should work fine for our use case.
+<br><br>
+**Decision:** Our final decision was to use PTC fusing for all power rails except two digital offboarded rails, which we would use e-fusing on for debugging purposes. Normally, the voltage drop across the shunt resistor in current-sensing OCP would affect analog readings, but would be negligible for digital signals. Therefore, we employed current-sensing OCP on two offboarded digital rails.
+
 **ADC selection**
 <br><br>
 How ADCs work and the two main architectures:
