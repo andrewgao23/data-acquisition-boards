@@ -69,6 +69,7 @@ Automotive fusing is the simplest option. It is a standard fuse that melts over 
 PTC fusing stands for positive temperature coefficient. The fuses are made of a material that expand at a certain temperature, increasing resistance massively. When it cools down, it conducts again, acting as a normal wire. We used this for the 2025-2026 sensor board OCP circuitry, and while it was not the main source of issues we had that year, some other concerns with this option were that the temperature threshold was not exact, and that the reaction time would take too long (much slower reaction time than both automotive fusing and e-fusing). However, we confirmed with the rest of the circuit design team that PTC fusing had a sufficiently low reaction time and that barring external issues, it should work fine for our use case.
 <br><br>
 **Decision:** Our final decision was to use PTC fusing for all power rails except two digital offboarded rails, which we would use e-fusing on for debugging purposes. Normally, the voltage drop across the shunt resistor in current-sensing OCP would affect analog readings, but would be negligible for digital signals. Therefore, we employed current-sensing OCP on two offboarded digital rails.
+<br><br>
 **ADC selection**
 <br><br>
 ADCs (analog-to-digital converters) take in an analog input and return a numerical value in binary to be processed by an MCU. On the sensor boards, the ADCs are responsible for handling the analog sensor output data and converting it to digital signals to be logged over CAN.
@@ -91,7 +92,6 @@ Digital grounds are for the digital, switching components. Fast switching introd
 We presented on these trades in an intermediate design review (IDR); the presentation can be found in [intermediate-design-review.pdf](intermediate-design-review.pdf). I worked on the sensor powering OCP and ADC selection, while my teammates worked on the other trades.
 <br><br>
 ## Switch to dual sensor board architecture
-<br><br>
 **Increased current draw**
 <br><br>
 **MCU pinout:**
