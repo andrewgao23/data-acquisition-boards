@@ -80,6 +80,9 @@ ADCs (analog-to-digital converters) take in an analog input and return a numeric
 <br><br>
 **Filtering and buffering**
 Between the sensor data output and ADC input, we have voltage buffers and an RC filter to remove noise from the readings.
+*insert screenshot of schematics/layout*
+*explain background for trade*
+*decision*
 <br><br>
 **Grounding**
 For the 2025-2026 season, we ran separate analog and digital grounds on the sensor boards. Analog grounds are quiet, have low current, and therefore a low, uniform voltage. This is beneficial for the ADC, which measures differential voltage between its input pin and GND. Same GND reference between the sensors and ADC input yields greater accuracy.
@@ -95,4 +98,5 @@ We presented on these trades in an intermediate design review (IDR); the present
 **Increased current draw**
 <br><br>
 **MCU pinout:**
+<br><br>
 
