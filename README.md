@@ -78,6 +78,8 @@ How ADCs work and the two main architectures:
 <br><br>
 **Grounding**
 <br><br>
+We presented on these trades in an intermediate design review (IDR); the presentation can be found in [View File](intermediate-design-review.pdf). I worked on the sensor powering OCP and ADC selection, while my teammates worked on the other trades.
+<br><br>
 ## Switch to dual sensor board architecture
 <br><br>
 **MCU pinout:**
