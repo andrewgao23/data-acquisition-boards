@@ -88,9 +88,11 @@ Digital grounds are for the digital, switching components. Fast switching introd
 *make list of pros and cons to this*
 *explain decision to combine grounds in 2026-2027*
 <br><br>
-We presented on these trades in an intermediate design review (IDR); the presentation can be found in [View File](intermediate-design-review.pdf). I worked on the sensor powering OCP and ADC selection, while my teammates worked on the other trades.
+We presented on these trades in an intermediate design review (IDR); the presentation can be found in [intermediate-design-review.pdf](intermediate-design-review.pdf). I worked on the sensor powering OCP and ADC selection, while my teammates worked on the other trades.
 <br><br>
 ## Switch to dual sensor board architecture
+<br><br>
+**Increased current draw**
 <br><br>
 **MCU pinout:**
 
