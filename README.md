@@ -73,9 +73,22 @@ PTC fusing stands for positive temperature coefficient. The fuses are made of a 
 **ADC selection**
 <br><br>
 ADCs (analog-to-digital converters) take in an analog input and return a numerical value in binary to be processed by an MCU. On the sensor boards, the ADCs are responsible for handling the analog sensor output data and converting it to digital signals to be logged over CAN.
-*insert screenshot of altium schematic and layout of ADCs from 2025-2026*
-*explain background on our 2025-2026 ADC*
-*explain goals for 2026-2027 season with the trade*
+<br><br>
+<img width="1251" height="615" alt="image" src="https://github.com/user-attachments/assets/95277952-1f28-440b-bd43-fa242942d275" />
+<img width="565" height="463" alt="image" src="https://github.com/user-attachments/assets/f575d865-e16d-4a67-b363-342cbc552a65" />
+<br><br>
+Our current ADC is an [ADS131M08QPBSRQ1](https://www.digikey.com/en/products/detail/texas-instruments/ADS131M08QPBSRQ1/17884996) delta-sigma external ADC. It has 8 input channels, 24-bit nominal resolution, and a voltage input range of -1.2V to 1.2V. We initially chose it for its low power consumption (6mW), high resolution, and voltage input range. Although the sensors may output voltage signals outside the ADC input range, we use voltage dividers to scale it down and then post-processing to amplify it back up to the actual readings.
+<br><br>
+While we had no problems with this ADC and it provided good data from our sensors, our goals for the 2026-2027 season were to see if we could find a better ADC (smaller, more efficient, etc). We had sufficient effective resolution and pin count for our use case, so we mostly looked at other factors.
+<br><br>
+When looking at ADCs, there are usually two architectures that ADCs come in: delta-sigma and SAR (successive approximation register). More about them are covered in [this Texas Instruments article](sar-vs-delta-sigma-adcs.pdf), but in short, delta-sigma oversamples an input at a high rate, pushes quantization noise out to high frequencies, and then uses a digital low-pass filter to remove that noise, producing a high-resolution output at a lower sample rate. SAR uses binary search to measure input voltages; for a given resolution, it sees if the voltage is lower than or higher than the voltage represented by the most significant bit (if lower, place a 0 for that bit), and does this for however many bits of resolution it has. An N-bit result takes N comparisons.
+<br><br>
+By the nature of each of these architectures, each of them have their own benefits and drawbacks. For example, SAR may have less latency, but requires much more power because the sample rate is so much higher than DS. SAR also generally provides less resolution for the same reason. Very early on, we ruled out SAR ADCs as a viable option for a potential new component.
+<br><br>
+We did trade studies on a couple ADCs of mostly DS architecture (one SAR for a comparison), taking into account various factors.
+<br><br>
+*insert trade*
+<br><br>
 *insert trades (including two architectures of ADC and their differences) and conclusion here*
 <br><br>
 **Filtering and buffering**
