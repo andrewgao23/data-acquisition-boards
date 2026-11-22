@@ -98,6 +98,9 @@ Between the sensor data output and ADC input, we have voltage buffers and an RC 
 *explain background for trade*
 *decision*
 <br><br>
+We also performed simulations on decoupling capacitors right by the ADC pin to see if they affected signal integrity from the sensors.
+*insert screenshot of confluence page*
+<br><br>
 **Grounding**
 <br><br>
 For the 2025-2026 season, we ran separate analog and digital grounds on the sensor boards. Analog grounds are quiet, have low current, and therefore a low, uniform voltage. This is beneficial for the ADC, which measures differential voltage between its input pin and GND. Same GND reference between the sensors and ADC input yields greater accuracy.
@@ -121,4 +124,11 @@ The biggest change for this increased current would've been the power stage ICs.
 <br><br>
 The added sensors also meant we needed to switch from a 72-pin to a 144-pin STM32. MCU pinout was decided by the software team, and the biggest effect to the CD team would be on layout.
 <br><br>
-
+## Schematic Capture
+With components decided and structure confirmed after the board count change, we finished schematic capture of all the circuits and began layouts.
+<br><br>
+<img width="843" height="740" alt="image" src="https://github.com/user-attachments/assets/3f280d29-c428-420c-88bf-aa64a908c15a" />
+<br><br>
+Example schematic of power stage.
+<br><br>
+**See [2026-2027 board](2026-2027board.md)**
