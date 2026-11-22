@@ -24,7 +24,7 @@ Offboarded power goes to sensors, and on-board power is used for internal compon
 <br><br>
 **Sensor power OCP:**
 <br><br>
-Rules require that the sensor boards provide over-current protection for power rails connecting the sensors. This was especially relevant with the 4-board architecture, as a fault with one board could short all 4 boards connected on the same rail.
+Rules require that the sensor boards provide over-current protection for power rails connecting the sensors. 
 <br><br>
 For the 2025-2026 season, I ran trade studies on potential OCP components such as PTC and automotive fusing, e-fusing, load-switch ICs, ORing controllers, and op-amps.
 <br><br>
@@ -87,9 +87,9 @@ By the nature of each of these architectures, each of them have their own benefi
 <br><br>
 We did trade studies on a couple ADCs of mostly DS architecture (one SAR for a comparison), taking into account various factors.
 <br><br>
-*insert trade*
+
 <br><br>
-*insert trades (including two architectures of ADC and their differences) and conclusion here*
+Ultimately, we found no superior alternatives, and we decided to stick with our current ADC, as it met all our needs and switching to a different ADC would require changes to firmware.
 <br><br>
 **Filtering and buffering**
 Between the sensor data output and ADC input, we have voltage buffers and an RC filter to remove noise from the readings.
