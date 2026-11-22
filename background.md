@@ -114,6 +114,7 @@ We presented on these trades in an intermediate design review (IDR); the present
 <br><br>
 ## Switch to dual sensor board architecture
 Shortly after IDR, a decision was made to combine the front two sensor boards and back two sensor boards due to mechanical integration issues with the four board setup. This new dual sensor board architecture brought a couple of significant changes:
+<br><br>
 **Increased current draw**
 <br><br>
 With each board now handling double the sensors, there would be increased current draw. I compiled a tracker of nominal current draw of all the sensors based on datasheets for this change.
