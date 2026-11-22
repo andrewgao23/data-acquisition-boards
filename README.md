@@ -5,6 +5,10 @@ The **data acquisition** (or sensor) boards on the vehicle is responsible for po
 <br><br>
 <img width="1750" height="899" alt="image" src="https://github.com/user-attachments/assets/e52823dc-6c6c-4c70-b1c8-5be231561d5b" />
 <br><br>
+2026-2027 Sensor Board:
+<br><br>
+<img width="1512" height="877" alt="image" src="https://github.com/user-attachments/assets/badf9a39-d328-4884-a65b-2b529e1233be" />
+<br><br>
 Until recently, the vehicle ran a 4-board architecture (now dual boards).
 <br><br>
 <img width="1357" height="443" alt="image" src="https://github.com/user-attachments/assets/3a2761fd-017d-4c27-89c3-4678b08ef2e7" />
