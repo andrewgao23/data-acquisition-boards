@@ -1,11 +1,11 @@
 # data-acquisition-boards
 The **data acquisition** (or sensor) boards on the vehicle is responsible for powering and protecting sensors, filtering analog and digital telemetry data, and converting it to CAN to be logged. It is non-car-critical, meaning nothing on the board should be required for the vehicle to drive.
 <br><br>
-2025-2026 Sensor Board:
+2025-2026 Sensor Board (8-layer, 3x7in):
 <br><br>
 <img width="1750" height="899" alt="image" src="https://github.com/user-attachments/assets/e52823dc-6c6c-4c70-b1c8-5be231561d5b" />
 <br><br>
-2026-2027 Sensor Board:
+2026-2027 Sensor Board (6-layer, 4x7in):
 <br><br>
 <img width="1512" height="877" alt="image" src="https://github.com/user-attachments/assets/badf9a39-d328-4884-a65b-2b529e1233be" />
 <br><br>
