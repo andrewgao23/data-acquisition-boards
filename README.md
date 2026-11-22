@@ -108,8 +108,15 @@ Digital grounds are for the digital, switching components. Fast switching introd
 We presented on these trades in an intermediate design review (IDR); the presentation can be found in [intermediate-design-review.pdf](intermediate-design-review.pdf). I worked on the sensor powering OCP and ADC selection, while my teammates worked on the other trades.
 <br><br>
 ## Switch to dual sensor board architecture
+Shortly after IDR, a decision was made to combine the front two sensor boards and back two sensor boards due to mechanical integration issues with the four board setup. This new dual sensor board architecture brought a couple of significant changes:
 **Increased current draw**
 <br><br>
+With each board now handling double the sensors, there would be increased current draw. I compiled a tracker of nominal current draw of all the sensors based on datasheets for this change.
+*insert confluence page*
+The biggest change for this increased current would've been the power stage ICs. We originally looked into higher wattage ICs, but after further review, we decided the 3A limit on our current ICs would be high enough to accommodate the added sensors. PTC fuses also did not change, as the trip current was still higher than the current draw under load.
+<br><br>
 **MCU pinout:**
+<br><br>
+The added sensors also meant we needed to switch from a 72-pin to a 144-pin STM32. MCU pinout was decided by the software team, and the biggest effect to the CD team would be on layout.
 <br><br>
 
