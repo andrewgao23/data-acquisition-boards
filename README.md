@@ -87,7 +87,7 @@ By the nature of each of these architectures, each of them have their own benefi
 <br><br>
 We did trade studies on a couple ADCs of mostly DS architecture (one SAR for a comparison), taking into account various factors.
 <br><br>
-
+(trade study here)[ADC-trade.pdf]
 <br><br>
 Ultimately, we found no superior alternatives, and we decided to stick with our current ADC, as it met all our needs and switching to a different ADC would require changes to firmware.
 <br><br>
