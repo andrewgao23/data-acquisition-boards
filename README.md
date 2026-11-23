@@ -74,6 +74,8 @@ PTC fusing stands for positive temperature coefficient. The fuses are made of a 
 <br><br>
 **Decision:** Our final decision was to use PTC fusing for all power rails except two digital offboarded rails, which we would use e-fusing on for debugging purposes. Normally, the voltage drop across the shunt resistor in current-sensing OCP would affect analog readings, but would be negligible for digital signals. Therefore, we employed current-sensing OCP on two offboarded digital rails.
 <br><br>
+<img width="160" height="490" alt="image" src="https://github.com/user-attachments/assets/c1b9c1dc-4c61-4103-92c0-2282be868426" />
+<br><br>
 **ADC selection**
 <br><br>
 ADCs (analog-to-digital converters) take in an analog input and return a numerical value in binary to be processed by an MCU. On the sensor boards, the ADCs are responsible for handling the analog sensor output data and converting it to digital signals to be logged over CAN.
@@ -98,9 +100,25 @@ Ultimately, we found no superior alternatives, and we decided to stick with our 
 **Filtering and buffering**
 <br><br>
 Between the sensor data output and ADC input, we have voltage buffers and an RC filter to remove noise from the readings.
-*insert screenshot of schematics/layout*
-*explain background for trade*
-*decision*
+<br><br>
+<img width="1326" height="960" alt="image" src="https://github.com/user-attachments/assets/ac9c9f6d-dd46-4368-a67a-f91395bbbc7d" />
+<img width="1142" height="683" alt="image" src="https://github.com/user-attachments/assets/cd85d2e4-9264-403f-9b1d-fa22d22e8606" />
+<br><br>
+Analog sensors output analog electrical signals. Current is outputted from sensor, goes through clean up filters, then travels to the ADC which reads a voltage drop across input impedance and converts it to digital signals for the MCU to process. The goal with this buffer system is to make sure the analog voltage signal received by ADC is high in amplitude and correct. Op-amp buffering works to negate the effects of sensor output impedance by buffering the voltage pre and post buffer. For the RC low-pass filter, the cutoff frequency is when output power is 50% of what it is before, (1/2piRC), with R including all resistances/impedances in series including sensor's impedance, and C being capacitance of the capacitor. When this cutoff is too high, the filter can't attenuate enough noise.
+<br><br>
+**Op amp buffering trade**
+<br><br>
+The goal of this trade was to determine if we needed the first op-amp or not, so we could save space. At least one op amp was needed to reduce sensor loading error. Having a high sensor input impedance makes sure that almost little current flows through, so the sensor and RC filter resistors don't drop significant voltage to change the sensor's voltage signal. We would need the extra op-amp under two conditions: 
+<br><br>
+First is if output impedance of the sensor is more than 1% of op amp input impedance. Second case is if output impedance of the sensor is more than 1% of RC filter's impedance. RC filter's cutoff frequency is calculated by 1/(2piRC). The sensor's impedance is counted in R and will affect cut off frequency if it is too high. Sensor impedance can be a maximum of 1% of resistance of RC filter. Otherwise, we need a op-amp between sensor and impedance to isolate them so they don't affect each other.
+<br><br>
+We conducted AC simulations in LTSpice with dual op-amp buffering and single op-amp buffering for different sensors. A more complete breakdown of simulations and LTSpice setup can be found in the [IDR document](intermediate-design-review.pdf).
+<br><br>
+<img width="1532" height="778" alt="image" src="https://github.com/user-attachments/assets/ce4b1ba9-feae-4b4d-9eb2-50b3e054c166" />
+<br><br>
+We decided to double buffer analog sensor signals and single buffer thermistor signals.
+<br><br>
+<img width="1526" height="622" alt="image" src="https://github.com/user-attachments/assets/b33d2ac8-4356-42f0-a2b6-e8f6e8760bab" />
 <br><br>
 We also performed simulations on decoupling capacitors right by the ADC pin to see if they affected signal integrity from the sensors.
 *insert screenshot of confluence page*
