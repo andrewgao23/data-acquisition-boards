@@ -120,8 +120,36 @@ We decided to double buffer analog sensor signals and single buffer thermistor s
 <br><br>
 <img width="1526" height="622" alt="image" src="https://github.com/user-attachments/assets/b33d2ac8-4356-42f0-a2b6-e8f6e8760bab" />
 <br><br>
-We also performed simulations on decoupling capacitors right by the ADC pin to see if they affected signal integrity from the sensors.
-*insert screenshot of confluence page*
+We also performed simulations on decoupling capacitors right by the ADC pin to see if they affected signal integrity from the sensors, referencing LTSpice setups with decisions from the earlier trade.
+<br><br>
+Datasheet recommendations:
+<br><br>
+<img width="1426" height="372" alt="image" src="https://github.com/user-attachments/assets/a4b2e8a4-784b-440f-ab2e-dd026b6eba21" />
+<br><br>
+Pitot tube testing (setup, no capacitor, with capacitor, side by side:
+<br><br>
+<img width="1040" height="710" alt="image" src="https://github.com/user-attachments/assets/a08f2f7f-285a-4db4-9cb5-9c05f8985b0e" />
+<img width="1917" height="842" alt="image" src="https://github.com/user-attachments/assets/f7a3947f-a44d-43a7-8cbe-e6532bcc54ae" />
+<img width="1917" height="845" alt="image" src="https://github.com/user-attachments/assets/f7c8d3ba-c156-47fa-bb41-575a6756e7d6" />
+<img width="1917" height="843" alt="image" src="https://github.com/user-attachments/assets/4cc226bd-3759-4629-92d3-2d5c407d1409" />
+<br><br>
+Load cell testing:
+<br><br>
+<img width="981" height="708" alt="image" src="https://github.com/user-attachments/assets/02692384-6df3-4182-81e6-dc6559b6919c" />
+<img width="1915" height="843" alt="image" src="https://github.com/user-attachments/assets/6abc1233-7f32-4904-9c41-fe3d2d2369e5" />
+<img width="1916" height="838" alt="image" src="https://github.com/user-attachments/assets/db73a442-571d-4822-ae6e-54caf75617fb" />
+<img width="1912" height="843" alt="image" src="https://github.com/user-attachments/assets/d5177ba8-efbc-4eff-8884-2dd43559fcfa" />
+<br><br>
+Linpot testing:
+<br><br>
+<img width="870" height="752" alt="image" src="https://github.com/user-attachments/assets/45188cf9-6707-4ead-b9f9-7855555cfa37" />
+<img width="1911" height="842" alt="image" src="https://github.com/user-attachments/assets/eca21fd7-0e4c-4692-ba22-e7b084318a0a" />
+<img width="1912" height="842" alt="image" src="https://github.com/user-attachments/assets/0076668c-4d77-4bba-a445-6c48220f8e1a" />
+<img width="1910" height="840" alt="image" src="https://github.com/user-attachments/assets/6435f33c-d82f-41bd-9503-a1aca503514e" />
+<br><br>
+Results: Noise spikes at ~30kHz for pitot tube, ~15kHz for load cells, and ~70kHz for lin pots, need to check if thresholds are acceptable.
+1uF decoupling as recommended in datasheet also seems high; will experiment with different values if recommendation is not suitable for our use case.
+Confirmed with sensors lead that frequencies are sufficiently high that sensor signal integrity effects are negligible. Decision: We will use a decoupling capacitor by ADC inputs.
 <br><br>
 **Grounding**
 <br><br>
@@ -129,8 +157,9 @@ For the 2025-2026 season, we ran separate analog and digital grounds on the sens
 <br><br>
 Digital grounds are for the digital, switching components. Fast switching introduces significant noise and ground bounce, where the voltage of the ground plane increases above 0V (usually in the millivolts range). For digital signals, however, we don't care, because most components such as the MCU measure digital low vs. high at around 3.3V. Noise or ground bounce does not affect the readings, and so fluctuations in the signal, unlike in analog components, do not impact normal function.
 <br><br>
-*make list of pros and cons to this*
-*explain decision to combine grounds in 2026-2027*
+<img width="1511" height="667" alt="image" src="https://github.com/user-attachments/assets/a25f2547-a61b-473b-ba81-76855e2bc466" />
+<br><br>
+ADSM131M08 datasheet also recommends a single ground.
 <br><br>
 We presented on these trades in an intermediate design review (IDR); the presentation can be found in [intermediate-design-review.pdf](intermediate-design-review.pdf). I worked on the sensor powering OCP and ADC selection, while my teammates worked on the other trades.
 <br><br>
@@ -140,7 +169,10 @@ Shortly after IDR, a decision was made to combine the front two sensor boards an
 **Increased current draw**
 <br><br>
 With each board now handling double the sensors, there would be increased current draw. I compiled a tracker of nominal current draw of all the sensors based on datasheets for this change.
-*insert confluence page*
+<br><br>
+<img width="1402" height="431" alt="image" src="https://github.com/user-attachments/assets/e6e32d2b-3dea-4b01-8437-097d7a53a74d" />
+<img width="987" height="645" alt="image" src="https://github.com/user-attachments/assets/30f3eb30-e25d-4038-a175-9d2eefa9e255" />
+<br><br>
 The biggest change for this increased current would've been the power stage ICs. We originally looked into higher wattage ICs, but after further review, we decided the 3A limit on our current ICs would be high enough to accommodate the added sensors. PTC fuses also did not change, as the trip current was still higher than the current draw under load.
 <br><br>
 **MCU pinout:**
@@ -154,4 +186,4 @@ With components decided and structure confirmed after the board count change, we
 <br><br>
 Example schematic of power stage.
 <br><br>
-**See [2026-2027 board](2026-2027board.md)**
+**Layout: See [2026-2027 board](2026-2027board.md)**
